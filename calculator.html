@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div></div>
+  <input type="text" placeholder="0.">
+
+  <p><button class="button" onclick="
+    updateCalculation('1');
+    
+    ">1</button>
+
+  <button class="button" onclick="
+     updateCalculation('2');
+    
+  ">2</button>
+
+  <button class="button" onclick="
+    updateCalculation('3');
+    
+  ">3</button>
+
+ <button class="button" onclick="
+  updateCalculation('+');
+    
+    ">+</button></p>
+  <p>
+   <button class="button" onclick="
+    updateCalculation('4');
+    
+    ">4</button>
+
+  <button class="button" onclick="
+     updateCalculation('5');
+    
+  ">5</button>
+
+  <button class="button" onclick="
+     updateCalculation('6');
+    
+  ">6</button>
+
+ <button class="button" onclick="
+     updateCalculation('-');
+    
+  ">-</button>
+  </p>
+  <p>
+    <button class="button" onclick="
+    updateCalculation('7');
+    
+    ">7</button>
+
+  <button class="button" onclick="
+     updateCalculation('8');
+    
+  ">8</button>
+
+  <button class="button" onclick="
+     updateCalculation('9');
+    
+  ">9</button>
+
+ <button class="button" onclick="
+     updateCalculation('*');
+    
+  ">*</button>
+  </p>
+  <p>
+    <button  class="button" onclick="
+     updateCalculation('0');
+    
+    ">0</button>
+
+  <button class="button" onclick="
+    updateCalculation('.');
+    
+  ">.</button>
+
+
+ <button class="button" onclick="
+    try {
+        let result = eval(calculation);
+        history.push({ expression: calculation, result: result });
+        calculation = result.toString();
+        console.log(result);
+    } catch {
+        console.log('Error');
+        calculation = '';
+    }
+">=</button>
+ <button class="button" onclick="
+     updateCalculation('/');
+  ">/</button>
+  </p>
+  <p>
+<button class="button" onclick="
+    calculation = '';
+    console.log('Cleared.');
+  ">Clear</button>
+  <button class="button" onclick="displayHistory()">History</button>
+
+  </p>
+
+  <script>
+    let history = [];
+    let calculation = '';
+
+    function updateCalculation(value) {
+    calculation += value;
+    console.log(calculation);  
+        };
+        
+    function displayHistory() {
+    if(history.length === 0){
+        console.log("No calculations yet.");
+    } else {
+        console.log("=== Calculation History ===");
+        history.forEach((item, index) => {
+            console.log(`${index + 1}. ${item.expression} = ${item.result}`);
+        });
+    }
+}
+    
+  </script>
+</body>
+</html>
